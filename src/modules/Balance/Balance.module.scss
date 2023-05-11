@@ -1,0 +1,35 @@
+.Balance {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 30px 40px;
+  margin: 20px;
+  > div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .money {
+    :first-child {
+      font-size: 20px;
+    }
+    :last-child {
+      font-size: 36px;
+      margin-top: 20px;
+    }
+  }
+  .actions {
+    :first-child {
+      color: #1dbc2d;
+    }
+    :last-child {
+      color: #f15858;
+    }
+    div {
+      font-size: 20px;
+      margin: 20px;
+    }
+  }
+}

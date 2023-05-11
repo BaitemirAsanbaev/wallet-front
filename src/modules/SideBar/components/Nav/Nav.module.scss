@@ -1,0 +1,39 @@
+.Nav {
+  ul {
+    list-style: none;
+    li {
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      div{
+        transition: .5s;        
+        width: 30px;
+        border-radius: 30px;
+        margin-left: -40px;
+        margin-right: 15px;
+      }
+      .active ~ div{
+        background-color: #454545;
+    }
+      a {
+        color: #454545;
+        text-decoration: none;
+        font-size: 32px;
+        transition: transform 0.5s ease-out;    
+        display: flex;
+        width: 200px;
+        border-radius: 20px;
+        padding: 15px 25px;
+        
+      }
+      .active {
+        background-color: #454545;
+        color: #fff;
+        justify-content: flex-end;
+        transform: translateX(50px);
+        width: 300px;
+      }
+    }
+  }
+}
