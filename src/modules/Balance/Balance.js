@@ -1,7 +1,7 @@
 import Button from "../../components/Button/Button";
 import classes from "./Balance.module.scss";
 
-const Balance = ({open, data }) => {
+const Balance = ({open, data, all }) => {
   let income=0
   let expense=0
   data.income.forEach(el => {
@@ -11,7 +11,7 @@ const Balance = ({open, data }) => {
     expense+=el.value
   });
   return (
-    <div className={classes.Balance}>
+    <div className={all? classes.All : classes.Balance}>
       <div>
         <div className={classes.money}>
           <div>{data.title}</div>

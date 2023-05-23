@@ -3,7 +3,10 @@ import classes from "./Button.module.scss"
 const Button = ({children, event})=> {
     return ( <button
     className={classes.Button}
-    onClick={event}>
+    onClick={(e)=>{
+        e.preventDefault()
+        event()
+    }}>
         {children}
     </button> );
 }

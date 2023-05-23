@@ -4,7 +4,7 @@
   width: 50vw;
   position: absolute;
   z-index: 4;
-  top: 15vh;
+  top: 10vh;
   left: 25vw;
   display: flex;
   justify-content: center;
@@ -35,6 +35,9 @@
       color: #454545;
       display: flex;
       flex-direction: column-reverse;
+      option{
+        padding: 15px;
+      }
     }
     .button{
       color: #fff;
@@ -50,7 +53,7 @@
     }
     textarea{
       border-radius: 30px;
-
+      padding: 20px;
     }
   }
 }

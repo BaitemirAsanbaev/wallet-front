@@ -1,5 +1,6 @@
-.Balance {
-  display: flex;
+.Balance,
+.All {
+  display: none;
   flex-direction: column;
   align-items: stretch;
   background-color: #fff;
@@ -23,13 +24,25 @@
   .actions {
     :first-child {
       color: #1dbc2d;
+      font-size: 26px;
     }
     :last-child {
       color: #f15858;
+      font-size: 26px;
     }
     div {
       font-size: 20px;
       margin: 20px;
     }
   }
+}
+.All {
+  display: flex;
+  width: 70%;
+}
+.Balance:last-of-type {
+  display: flex;
+}
+.Balance:nth-last-of-type(2) {
+  display: flex;
 }

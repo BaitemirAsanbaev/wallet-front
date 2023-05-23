@@ -16,15 +16,6 @@ const Nav = () => {
         </li>
         <li>
           <NavLink
-            to="/statistics"
-            className={({ isActive }) => (isActive ? classes.active : null)}
-          >
-            <span>Statistics</span>
-          </NavLink>
-          <div></div>
-        </li>
-        <li>
-          <NavLink
             to="/balances"
             className={({ isActive }) => (isActive ? classes.active : null)}
           >
@@ -34,19 +25,20 @@ const Nav = () => {
         </li>
         <li>
           <NavLink
-            to="/transactins"
+            to="/statistics"
             className={({ isActive }) => (isActive ? classes.active : null)}
           >
-            <span>Transactions</span>
+            <span>Statistics</span>
           </NavLink>
           <div></div>
         </li>
+        
         <li>
           <NavLink
-            to="/budget"
+            to="/history"
             className={({ isActive }) => (isActive ? classes.active : null)}
           >
-            <span>Budget</span>
+            <span>History</span>
           </NavLink>
           <div></div>
         </li>

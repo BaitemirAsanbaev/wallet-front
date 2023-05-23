@@ -1,44 +1,35 @@
-import { useEffect, useState } from "react";
 import ActionModal from "../components/ActionModal/ActionModal";
 import ActionButtons from "../components/ActiosButtons/ActionButtons";
 import Backdrop from "../components/Backdrop/Backdrop";
 import Balance from "../modules/Balance/Balance";
 import Widget from "../modules/Balance/Widget";
 import Budget from "../modules/Budget/Budget";
-import axios from "axios";
-import api from "../api";
 import BalanceModal from "../components/BalanceModal/BalanceModal";
 import Button from "../components/Button/Button";
+import { Link } from "react-router-dom";
+import TypesModal from "../components/TypesModal/TypesModal";
+import BudgetModal from "../components/BudgetModal/BudgetModal";
 
-const Home = () => {
-  const [opened, setOpened] = useState(false);
-  const [which, setWhich] = useState(0);
-  const [openedB, setOpenedB] = useState(false);
-  const [typeB, setTypeB] = useState("");
-  const [balance, setBalances] = useState([]);
-  const [incomeTypes, setIncomeTypes] = useState([]);
-  const [expenseTypes, setExpenseTypes] = useState([]);
-  const [type, setType] = useState("");
-  function getBalances() {
-    axios.get(api + "balances").then((res) => {
-      setBalances(res.data);
-    });
-  }
-  function getIncomeTypes() {
-    axios.get(api + "balances/income/types").then((res) => {
-      setIncomeTypes(res.data);
-    });
-  }
-  function getExpenseTypes() {
-    axios.get(api + "balances/expense/types").then((res) => {
-      setExpenseTypes(res.data);
-    });
-  }
-  useEffect(() => {
-    getBalances();
-    getIncomeTypes();
-    getExpenseTypes();
-  }, [balance]);
+const Home = ({
+  opened,
+  openedB,
+  setOpened,
+  setOpenedB,
+  setType,
+  setTypeB,
+  which,
+  balance,
+  typeB,
+  incomeTypes,
+  expenseTypes,
+  type,
+  setWhich,
+  openedT,
+  setOpenedT,
+  openedBg,
+  setOpenedBg,
+  budget
+}) => {
   return (
     <div
       style={{
@@ -49,11 +40,13 @@ const Home = () => {
         padding: "30px",
       }}
     >
-      {opened || openedB ? (
+      {opened || openedB || openedT || openedBg ? (
         <Backdrop
           close={() => {
             setOpened(false);
             setOpenedB(false);
+            setOpenedT(false);
+            setOpenedBg(false);
           }}
         />
       ) : null}
@@ -63,12 +56,15 @@ const Home = () => {
         type={typeB}
         close={() => setOpenedB(false)}
       />
+      <TypesModal type={type} opened={openedT} close={()=>setOpenedT(false)}/>
+      <BudgetModal opened={openedBg} close={() => setOpenedBg(false)} />
       <ActionModal
         type={type}
         close={() => setOpened(false)}
         opened={opened}
         incomeTypes={incomeTypes}
         expenseTypes={expenseTypes}
+        openT={() => setOpenedT(true)}
       />
       <Widget title={"Balances"}>
         <div
@@ -96,6 +92,16 @@ const Home = () => {
             >
               Create new balance
             </Button>
+            
+              {balance.length?
+              <Button event={()=>console.log("")}>
+              <Link
+                  to={"/balances"}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  View all balances
+                </Link></Button>:null }
+            
           </div>
           {balance.map((item) => {
             return (
@@ -113,7 +119,7 @@ const Home = () => {
         </div>
       </Widget>
       <Widget title={"Budget"}>
-        <Budget />
+        <Budget open={() => setOpenedBg(true)} budget={budget} />
       </Widget>
       <Widget title={"Actions"}>
         <ActionButtons

@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import classes from "./ActionModal.module.scss";
 import axios from "axios";
 import api from "../../api";
+import Button from "../Button/Button";
 
-const ActionModal = ({ type, close, opened, incomeTypes, expenseTypes, balance }) => {
+const ActionModal = ({ type, close, opened, incomeTypes, expenseTypes, openT }) => {
   const [income, setIncome] = useState(0);
   const [id, setId] = useState(1);
   const [second_id, setSecondId] = useState(2);
@@ -49,15 +50,16 @@ const ActionModal = ({ type, close, opened, incomeTypes, expenseTypes, balance }
       <form>
         <h1>{title}</h1>
 
-        <label htmlFor="income">Amount</label>
+        <label  htmlFor="income">Amount</label>
         <input
+        required
           type="number"
           name="inome"
           id="income"
           onInput={(e) => setIncome(e.target.value)}
         />
         <label htmlFor="balance">Balance</label>
-        <select onChange={(e) => setId(e.target.value)} id="balance">
+        <select required onChange={(e) => setId(e.target.value)} id="balance">
           {balances.map((item) => {
             return (
               <option key={item.id} value={item.id}>
@@ -68,6 +70,7 @@ const ActionModal = ({ type, close, opened, incomeTypes, expenseTypes, balance }
         </select>
         {type === "transaction" ? (
           <select
+          required
             onChange={(e) => setSecondId(e.target.value)}
             id="second_balance"
           >
@@ -82,7 +85,7 @@ const ActionModal = ({ type, close, opened, incomeTypes, expenseTypes, balance }
         ) : (
           <>
           <label>Type</label>
-            <select onChange={(e) => setTypo(e.target.value)}>
+            <select required onChange={(e) => setTypo(e.target.value)}>
               {type === "income"
                 ? incomeTypes.map((item) => {
                     return (
@@ -99,6 +102,7 @@ const ActionModal = ({ type, close, opened, incomeTypes, expenseTypes, balance }
                     );
                   })}
             </select>
+            <Button event={()=>{openT();close()}}>Add type</Button>
             <label>Description</label>
             <textarea onChange={(e) => setDescription(e.target.value)} />
           </>

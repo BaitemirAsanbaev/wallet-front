@@ -1,0 +1,25 @@
+.TypesModal{
+    position: absolute;
+    left: 33%;
+    z-index: 5;
+    background-color: #fff;
+    transition: .5s;
+    border-radius: 30px;
+    padding: 30px;
+    width: 33%;
+    form{
+        display: flex;
+        max-width: 200px;
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: stretch;
+        h2{
+            text-align: center;
+        }
+        input{
+            border-radius: 20px;
+            padding: 10px;
+            margin: 20px 0;
+        }
+    }
+}

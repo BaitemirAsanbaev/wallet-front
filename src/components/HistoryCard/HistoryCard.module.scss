@@ -1,0 +1,40 @@
+.HistoryCard{
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 500px;
+    .card_head{
+            position: relative;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h2{
+                font-size: 32px;
+                margin: 7px 0px;
+            }
+
+        
+    }
+    .card_body{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 400px;
+        margin: 0 auto;
+        img{
+            margin: 0px 5px;
+            transform: scale(.8);
+        }
+        p{
+            overflow-wrap: break-word;
+            inline-size: 100px;
+            margin-left: 20px;
+
+        }
+    }
+}

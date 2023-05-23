@@ -1,0 +1,13 @@
+.BudgetModal{
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 4;
+    left: 25vw;
+    width: 50vw;
+    border-radius: 30px;
+    transition: .4s;
+}
